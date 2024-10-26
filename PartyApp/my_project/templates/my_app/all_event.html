@@ -1,0 +1,43 @@
+{% extends 'my_app/signup.html' %}
+
+{% block head_block %}
+<style>
+    .section-one{
+        margin-top: 2rem;
+    }
+    .section-two{
+        margin-top: 2rem;
+    }
+    .jumbotron{
+        background-color: #fff;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.2);
+    }
+    .jumbotron:hover{
+        box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.4);
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-4 col-sm-3">
+            <div class="section-two">
+                <h3>All events: {{ event.count }}</h3>
+                <br>
+                {% for i in event %}
+                <div class="jumbotron jumbotron1">
+                    <h3>Title: {{ i.title }}</h3>
+                    <hr>
+                    <p>Description: {{ i.description }}</p>
+                    <a href="{% url 'event_details' pk=i.pk %}" class="btn btn-outline-info">Details about the event</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

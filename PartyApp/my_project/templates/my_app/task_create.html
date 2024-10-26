@@ -1,0 +1,30 @@
+{% extends 'my_app/signup.html' %}
+
+{% block head_block %}
+<style>
+    .create_page{
+        margin-top: 2rem;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="create_page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-4 col-sm-3">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Post" class="btn btn-outline-info">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<script>
+    var event = "{{ event.id }}";
+    document.getElementById('event1').value = event;
+</script>
+{% endblock %}

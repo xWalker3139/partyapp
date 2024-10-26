@@ -1,0 +1,51 @@
+{% extends 'my_app/signup.html' %}
+
+{% block head_block %}
+<style>
+    .section-one{
+        margin-top: 2rem;
+    }
+    .section-two{
+        margin-top: 2rem;
+    }
+    .jumbotron{
+        background-color: #fff;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.2);
+    }
+    .jumbotron:hover{
+        box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.4);
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-3">
+            <div class="section-one"></div>
+            <a href="{% url 'create' %}" style="color: black;">Create an event</a>
+            <br>
+            <a href="{% url 'logout_user' %}" style="color: black;">Logout</a>
+        </div>
+        <div class="col-lg-8 col-md-4 col-sm-3">
+            <div class="section-two"></div>
+            {% for data in model %}
+            <div class="jumbotron jumbotron1">
+                <h3>Title: {{ data.title }}</h3>
+                <hr>
+                <p>Description: {{ data.description }}</p>
+                <a href="{% url 'create_task' pk=data.pk %}" class="btn btn-outline-secondary">Create a task</a>
+                <a href="{% url 'task_details' %}" class="btn btn-outline-success">Details about the task</a>
+                <a href="{% url 'update_event' pk=data.pk %}" class="btn btn-outline-info">Update</a>
+                <a href="{% url 'delete_event' pk=data.pk %}" class="btn btn-outline-danger">Delete</a>
+            </div>
+            {% empty %}
+            <p>No tasks available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

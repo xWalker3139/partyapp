@@ -1,0 +1,56 @@
+{% extends 'my_app/signup.html' %}
+
+{% block head_block %}
+<style>
+    .section-one{
+        margin-top: 2rem;
+    }
+    .section-two{
+        margin-top: 2rem;
+    }
+    .jumbotron{
+        background-color: #fff;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.2);
+    }
+    .jumbotron:hover{
+        box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.4);
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-4 col-sm-3">
+            <div class="section-two">
+                <h3>Details about this event:</h3>
+                <br>
+                <p>Title: {{ event.title }}</p>
+                <p>Description: {{ event.description }}</p>
+                <p>Location: {{ event.location }}</p>
+                <p>Number of people: {{ joined_count }} out of {{ max_capacity }}</p>
+                <hr>
+
+                {% if has_joined %}
+                    <p>You have joined this event.</p>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button type="submit" name="unjoin" class="btn btn-outline-danger">Unjoin this Event</button>
+                    </form>
+                {% elif joined_count < max_capacity %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button type="submit" name="join" class="btn btn-outline-info">Join this Event</button>
+                    </form>
+                {% else %}
+                    <p>This event has reached its maximum capacity.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'my_app/signup.html' %}
+
+{% block head_block %}
+<style>
+    .create_page{
+        margin-top: 2rem;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="create_page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-4 col-sm-3">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Update" class="btn btn-outline-info">
+                    {% for i in messages %}
+                        <p>{{i}}</p>
+                    {% endfor %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById('user1').value = name;
+</script>
+{% endblock %}

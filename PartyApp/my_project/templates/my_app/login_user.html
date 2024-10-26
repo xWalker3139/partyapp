@@ -1,0 +1,86 @@
+{% extends 'my_app/signup.html' %}
+
+{% block head_block %}
+<style>
+    #jumbotron3 {
+        max-width: 500px;
+        margin: 140px auto;
+        border-radius: 5px;
+        padding: 25px 25px 25px 25px;
+        box-shadow: 5px 5px 15px -5px rgb(0 0 0 / 30%);
+        background-color: white;
+        margin-bottom: 60px;
+    }
+    #anchor1{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        font-size: 19px;
+        text-decoration: none;
+        color: #000;
+        text-align: center;
+        padding-left: 40px;
+    }
+    #id_password1 {
+            display: block;
+            width: 100%;
+            height: calc(1.5em + 0.75rem + 2px);
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+        #id_password2 {
+            display: block;
+            width: 100%;
+            height: calc(1.5em + 0.75rem + 2px);
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+    .my_button{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bolder;
+        color: #fff;
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #92B4EC;
+        border: 1px solid #92B4EC;
+        border-radius: 12px;
+        transition: 0.4 ease-in-out;
+    }
+    .my_button:hover{
+        background-color: #6a96de;
+    }
+</style>
+{% endblock %}
+
+{% block body_block %}
+<div class="jumbotron" id="jumbotron3">
+    <div class="container">
+        <br>
+        <form class="form-group" method="POST" action="" style="font-family: 'Montserrat', sans-serif;font-weight: bolder;">
+            {% csrf_token %}
+            <label for="nume" style="padding-top: 12px;">Username:</label>
+            <input type="text" class="form-control" placeholder="Numele..." name="username" autocomplete="off" required>
+            <label for="parola" style="padding-top: 12px;">Password:</label>
+            <input type="password" class="form-control" placeholder="Parola..." name="password" autocomplete="off" required>
+            <br>
+            <input type="submit" value="Intra in cont" class="my_button">
+        </form>
+    </div>
+</div>
+{% endblock %}
